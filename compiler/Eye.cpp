@@ -6,7 +6,7 @@
 
 int main()
 {
-	auto tokenList = Tokenizer().Tokenize("if (a>5) { ExecuteOrder66(palpatinePassword); } else { force = 0.5; }");
+	auto tokenList = Tokenizer().Tokenize("if (a>5) { ExecuteOrder66(palpatinePassword); } else { force.RestoreBalance(); }");
 
 	for (auto& t : tokenList)
 	{
