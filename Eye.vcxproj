@@ -129,11 +129,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Eye.cpp" />
-    <ClCompile Include="tokenizer.cpp" />
+    <ClCompile Include="compiler\Eye.cpp" />
+    <ClCompile Include="compiler\parser.cpp" />
+    <ClCompile Include="compiler\tokenizer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="tokenizer.h" />
+    <ClInclude Include="compiler\parser.h" />
+    <ClInclude Include="compiler\tokenizer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
