@@ -31,6 +31,8 @@ enum class TokenType
 	KwComp,
 	KwReturn,
 	KwVoid,
+	KwConstexpr,
+	KwMatch,
 
 	Label,
 	Numeric,

@@ -34,9 +34,11 @@ Token SourceStream::ReadToken()
 		else if (buffer == "comp")		return Token{ TokenType::KwComp, buffer };
 		else if (buffer == "return")	return Token{ TokenType::KwReturn, buffer };
 		else if (buffer == "void")		return Token{ TokenType::KwVoid, buffer };
+		else if (buffer == "constexpr")		return Token{ TokenType::KwVoid, buffer };
+		else if (buffer == "match")		return Token{ TokenType::KwVoid, buffer };
 		else return Token{ TokenType::Label, buffer };
 	}
-	//match numeric data
+	// Match numeric data
 	else if (IsDigit(currentChar))
 	{
 		bool foundDecimal = false;
@@ -56,6 +58,7 @@ Token SourceStream::ReadToken()
 		position++;
 		switch (currentChar)
 		{
+		/* Brackets */
 		case '(': return Token{ TokenType::LParen,		std::string{ currentChar } }; break;
 		case '<': return Token{ TokenType::LTriangle,	std::string{ currentChar } }; break;
 		case '[': return Token{ TokenType::LSquare,		std::string{ currentChar } }; break;
@@ -65,6 +68,7 @@ Token SourceStream::ReadToken()
 		case ']': return Token{ TokenType::RSquare,		std::string{ currentChar } }; break;
 		case '}': return Token{ TokenType::RCurly,		std::string{ currentChar } }; break;
 
+		/* Operators */
 		case '=': return Token{ TokenType::OpEqual,		std::string{ currentChar } }; break;
 		case '.': return Token{ TokenType::OpDot,		std::string{ currentChar } }; break;
 		case '+': return Token{ TokenType::OpPlus,		std::string{ currentChar } }; break;
