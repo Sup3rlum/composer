@@ -33,6 +33,7 @@ enum class TokenType
 	KwVoid,
 	KwConstexpr,
 	KwMatch,
+	KwFunc,
 
 	Label,
 	Numeric,
@@ -81,4 +82,22 @@ public:
 	Tokenizer() {}
 	std::vector<Token> Tokenize(const std::string& str);
 
+};
+
+class TokenStream
+{
+public:
+	TokenStream(const std::vector<Token>& tokens) : tokens(tokens), position(0) {}
+	//bool Match(const std::vector<TokenType>& str);
+
+	template<typename...TArgs>
+	bool Match(TArgs... toks);
+	bool MatchLabel(std::string& outName);
+
+	bool EndOf() { return position >= tokens.size(); }
+
+
+private:
+	const std::vector<Token>& tokens;
+	int position;
 };

@@ -18,11 +18,22 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="compiler\expression.h" />
+    <ClInclude Include="compiler\matcher.h" />
+    <ClInclude Include="compiler\parser.h" />
+    <ClInclude Include="compiler\tokenizer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="compiler\Composer.cpp" />
+    <ClCompile Include="compiler\parser.cpp" />
+    <ClCompile Include="compiler\tokenizer.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{1bb7d13a-df5b-4f47-a8bf-72c4d1aadd68}</ProjectGuid>
-    <RootNamespace>Eye</RootNamespace>
+    <ProjectGuid>{65a92477-77b3-40eb-be87-6db5be79f4e8}</ProjectGuid>
+    <RootNamespace>Composer</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -104,7 +115,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -119,7 +129,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -128,15 +137,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="compiler\Eye.cpp" />
-    <ClCompile Include="compiler\parser.cpp" />
-    <ClCompile Include="compiler\tokenizer.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="compiler\parser.h" />
-    <ClInclude Include="compiler\tokenizer.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
