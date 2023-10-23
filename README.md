@@ -1,2 +1,6 @@
-# eyelang
-Home of the Eye language. See yourself around!
+# Composer
+Composition
+Oriented
+Multi-paradigm
+Programming
+-ser
