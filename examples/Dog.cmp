@@ -1,0 +1,29 @@
+
+struct HelloStruct
+{
+	let helloField: int32 = 0;
+
+	func afunc() -> int32
+	{
+		let a: int32 = (5 + 7) / 10;
+		return a;
+	}
+}
+
+comp Cook[Person, Recipes]
+{
+	let helloField: int32 = 0;
+
+	func afunc() -> int32
+	{
+		let a: int32 = (5 + 7) / 10;
+		return a;
+	}
+}
+
+enum Hi
+{
+	One,
+	Two,
+	Three
+}

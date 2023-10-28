@@ -4,6 +4,7 @@
 #include <vector>
 #include <unordered_map>
 #include <string_view>
+#include <stack>
 
 
 enum class TokenType
@@ -21,6 +22,8 @@ enum class TokenType
 	OpExcl,
 	OpSquestion,
 	OpSemicolon,
+	OpColon,
+	OpAmpersand,
 
 	/* KeyWords */
 	KwIf,
@@ -34,6 +37,10 @@ enum class TokenType
 	KwConstexpr,
 	KwMatch,
 	KwFunc,
+	KwConst,
+	KwLet,
+	KwVar,
+	KwEnum,
 
 	Label,
 	Numeric,
@@ -93,11 +100,36 @@ public:
 	template<typename...TArgs>
 	bool Match(TArgs... toks);
 	bool MatchLabel(std::string& outName);
+	bool MatchNumber(std::string& outValue);
 
 	bool EndOf() { return position >= tokens.size(); }
 
+	void Mark() 
+	{
+		marks.push(position);
+	}
+	int Error(const std::string& errorName)
+	{
+		errorList.push_back(errorName);
+		return NonMatch();
+	}
+	int NonMatch()
+	{
+		position = marks.top();
+		marks.pop();
+		return NULL;
+	}
+
+	auto ErrorList()
+	{
+		return errorList;
+	}
 
 private:
+
+	std::vector<std::string> errorList;
+	std::stack<int> marks;
+
 	const std::vector<Token>& tokens;
 	int position;
 };

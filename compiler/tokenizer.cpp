@@ -48,6 +48,14 @@ Token SourceStream::ReadToken()
             return Token{ TokenType::KwVoid, buffer };
         else if (buffer == "func")
             return Token{ TokenType::KwFunc, buffer };
+        else if (buffer == "let")
+            return Token{ TokenType::KwLet, buffer };
+        else if (buffer == "const")
+            return Token{ TokenType::KwConst, buffer };
+        else if (buffer == "var")
+            return Token{ TokenType::KwVar, buffer };
+        else if (buffer == "enum")
+            return Token{ TokenType::KwEnum, buffer };
         else
             return Token{ TokenType::Label, buffer };
     }
@@ -125,6 +133,9 @@ Token SourceStream::ReadToken()
             break;
         case ';':
             return Token{TokenType::OpSemicolon, std::string{currentChar}};
+            break;
+        case ':':
+            return Token{ TokenType::OpColon, std::string{currentChar} };
             break;
         default:
             break;
