@@ -1,0 +1,42 @@
+
+
+data TissueObject
+{
+    string name;
+    array<(uint32, uint32)> points;  
+}
+
+data Study
+{
+    string patientId;
+    array<Slice> slices;
+}
+
+data Slice
+{
+    uint32 sliceIndex;
+    array<Pixel> pixelData;
+}
+
+data Pathology
+{
+    float32 confidence;
+    array<TissueObject> objects; 
+}
+
+
+impl SliceRegion
+{
+    GetSlices() -> array<Slice>;
+}
+
+
+
+comp Hernia[SliceRegion|Pathology, Study]
+{
+    GetSlices() -> array<Slice>
+    {
+        for (int32 idx=0; idx < )
+    }
+}
+

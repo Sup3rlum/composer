@@ -1,0 +1,12 @@
+
+
+factorial(int32 num)
+{
+    int32 result = 1;
+    for (int32 idx = 2; idx <= num; idx++)
+    {
+        result *= idx;
+    }
+
+    return result;
+}

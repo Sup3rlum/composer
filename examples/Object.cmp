@@ -1,0 +1,41 @@
+
+data Visible
+{
+    model: Model*;
+    func Draw() -> void 
+    {
+
+    }
+}
+
+data Solid
+{
+    func Collide() -> void
+    {
+
+    }
+}
+
+data Moveable
+{
+    func Move(x: int32, y: int32) -> void
+    {
+    }
+}
+
+
+impl [Moveable, Solid]
+{
+    func TryMove(x: int32, y: int32) -> void
+    {
+        Moveable::Move();
+        Solid::Collide();
+    }
+}
+
+comp Person[Moveable,Solid]
+{
+    Person() :
+        Moveable(),
+        Solid(),
+}

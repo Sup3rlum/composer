@@ -17,24 +17,30 @@ PResult<StructDefinition> Parser::ParseStructDefinition(TokenStream& tokens)
 
 	std::vector<MemberFunctionDefinition*> members;
 	std::vector<VarDeclaration*> fields;
-	do
+
+	tokens.PushScope(structName);
 	{
-		member = ParseMemberFunctionDefinition(tokens);
-		if (member)
+		do
 		{
-			members.push_back(member);
-			continue;
-		}
+			member = ParseMemberFunctionDefinition(tokens);
+			if (member)
+			{
+				members.push_back(member);
+				continue;
+			}
 
-		field = ParseVarDeclaration(tokens);
-		if (field)
-		{
-			if (!tokens.Match(TokenType::OpSemicolon)) return ERROR("Expected ';'");
-			fields.push_back(field);
-			continue;
-		}
+			field = ParseVarDeclaration(tokens);
+			if (field)
+			{
+				if (!tokens.Match(TokenType::OpSemicolon)) return ERROR("Expected ';'");
+				fields.push_back(field);
+				continue;
+			}
 
-	} while (field || member);
+		} while (field || member);
+
+	}
+	tokens.PopScope();
 
 	if (!tokens.Match(TokenType::RCurly)) return ERROR("Expected '}'");
 

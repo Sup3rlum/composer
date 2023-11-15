@@ -1,29 +1,54 @@
-
-struct HelloStruct
+struct Person
 {
-	let helloField: int32 = 0;
-
-	func afunc() -> int32
+	let name: string = "";
+	let age: int32 = 0;
+	let health: int32 = 100;
+	func SayHi() -> void
 	{
-		let a: int32 = (5 + 7) / 10;
-		return a;
+		print("Hi my name is " + name);
 	}
 }
-
-comp Cook[Person, Recipes]
+struct Weapon
 {
-	let helloField: int32 = 0;
-
-	func afunc() -> int32
+	let magazineCapacity: int32 = 10;
+	let recoilForce: int32 = 15;
+}
+impl Shootable[Weapon, Person]
+{
+	func Shoot() -> void
 	{
-		let a: int32 = (5 + 7) / 10;
-		return a;
+		if (Weapon::magazineCapacity > 0)
+		{
+			Weapon::magazineCapacity--;
+			if (recoilForce > 10)
+			{
+				Person::health -= 0.02 * Person::age;
+			}
+		}
 	}
 }
-
-enum Hi
+impl Defusable[Person, DefuseKit]
 {
-	One,
-	Two,
-	Three
+	func Defuse() -> void
+	{
+		/* Stuff */
+	}
+}
+comp CounterTerrorist[Person, Weapon, RiotShield] {}
+comp BombSquadGuy[Person, Weapon, DefuseKit] {}
+comp Terrorist[Person, Weapon, C4Explosive] {}
+func main()
+{
+
+	CounterTerrorist ct1;
+	BombSquadGuy bombGuy;
+	Terrorist badGuy;
+
+	ct1.Shoot(); // Ok
+	bombGuy.Shoot(); // Ok
+	badGuy.Shoot(); // Ok
+
+	bombGuy.Defuse(); // Ok
+	ct1.Defuse(); // Error
+
 }

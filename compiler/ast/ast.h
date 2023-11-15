@@ -1,41 +1,32 @@
 #pragma once
 
-#include "expression.h"
-#include "statement.h"
-#include "toplevel.h"
-#include "function.h"
+#include "Common.h"
+#include "Expression.h"
+#include "Function.h"
+#include "Module.h"
+#include "Statement.h"
 
 class Block : public ASTNode
 {
-public:
-    std::vector<class Statement*> Statements;
-    Block(const std::vector<class Statement*>& stmnts) : Statements(stmnts) {}
+  public:
+    std::vector<class Statement *> Statements;
+    Block(const std::vector<class Statement *> &stmnts) : Statements(stmnts)
+    {
+    }
     ~Block()
     {
     }
 
-    llvm::Value* Codegen();
+    llvm::Value *Codegen(CModule *module);
 };
-
-/************************************************
-*
-*   EXPRESSION
-*
-*************************************************/
-
-/* Statements */
-
-/*
-*  TOP LEVEL STATEMENTS
-*/
-
 
 class AST
 {
-public:
+  public:
     std::vector<std::string> ErrorList;
-    std::vector<TopLevelStatement*> Statements;
-    AST(const std::vector<TopLevelStatement*> stmnts) : Statements(stmnts)
-    {}
-    llvm::Value* Codegen();
+    std::vector<ModuleStatement *> Statements;
+    AST(const std::vector<ModuleStatement *> stmnts) : Statements(stmnts)
+    {
+    }
+    llvm::Value *Codegen(CModule *module);
 };

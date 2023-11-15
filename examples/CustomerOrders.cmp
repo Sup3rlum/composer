@@ -1,0 +1,52 @@
+
+
+import std;
+
+
+
+data Thermometer
+{
+    int32 AbsoluteDegrees = 0;
+}
+
+data BluetoothConnection
+{
+    string token = "";
+    bool connected = false;
+}
+
+impl Farenheit for Thermometer
+{
+    GetDegFarenheit()
+    {
+        return (AbsoluteDegrees - 273.0 + 32) * 9 / 5;
+    }
+}
+
+impl Celsius for Thermometer
+{
+    GetDegCelsius()
+    {
+        return (AbsoluteDegrees - 273.0);
+    }
+}
+
+
+impl Bluetooth for BluetoothConnection
+{
+    Connect(string passcode)
+    {
+        if (!BluetoothConnection.connected)
+        {
+            BluetoothConnection.token = std::hash(passcode);
+            BluetoothConnection.connected = true;
+        }
+    }
+    
+}
+
+
+comp DigitalThermometer[Bluetooth, Celsius, Farenheit | Thermometer, BluetoothConnection]
+{
+    
+}

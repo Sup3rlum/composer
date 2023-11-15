@@ -1,136 +1,79 @@
 #include "codegen.h"
 
-
 using namespace llvm;
 
-/*
-static std::unique_ptr<LLVMContext> TheContext;
-static std::unique_ptr<Module> TheModule;
-static std::unique_ptr<IRBuilder<>> Builder;
-static std::map<std::string, Value*> NamedValues;*/
-
-Value* IfStatement::Codegen()
+Value *IfStatement::Codegen(CModule *module)
 {
     return NULL;
 }
 
-Value* MemberFunctionDefinition::Codegen()
-{
-    /*// First, check for an existing function from a previous 'extern' declaration.
-    Function* TheFunction = TheModule->getFunction(FuncName);
-
-    // Create Func Signature
-    std::vector<Type*> Doubles(Args.size(), Type::getDoubleTy(*TheContext));
-    FunctionType* FuncSignature = FunctionType::get(Type::getDoubleTy(*TheContext), Doubles, false);
-
-    // Function
-    Function* TheFunction = Function::Create(FuncSignature, Function::ExternalLinkage, FuncName, TheModule.get());
-
-    // Set names for all arguments.
-    unsigned Idx = 0;
-    for (auto& Arg : TheFunction->args())
-        Arg.setName(Args[Idx++]->Name);
-
-    if (!TheFunction)
-        return nullptr;
-
-    // Create a new basic block to start insertion into.
-    BasicBlock* BB = BasicBlock::Create(*TheContext, "entry", TheFunction);
-    Builder->SetInsertPoint(BB);
-
-    // Record the function arguments in the NamedValues map.
-    NamedValues.clear();
-    for (auto& Arg : TheFunction->args())
-        NamedValues[std::string(Arg.getName())] = &Arg;
-
-    if (Value* RetVal = Body->codegen()) 
-    {
-        // Finish off the function.
-        Builder->CreateRet(RetVal);
-
-        // Validate the generated code, checking for consistency.
-        verifyFunction(*TheFunction);
-
-        return TheFunction;
-    }
-
-    // Error reading body, remove function.
-    TheFunction->eraseFromParent();*/
-    return nullptr;
-}
-
-Value* StructDefinition::Codegen()
+Value *StructDefinition::Codegen(CModule *module)
 {
     return NULL;
 }
 
-Value* ForStatement::Codegen()
+Value *ForStatement::Codegen(CModule *module)
 {
     return NULL;
 }
 
-Value* WhileStatement::Codegen()
+Value *WhileStatement::Codegen(CModule *module)
 {
     return NULL;
 }
 
-Value* Block::Codegen()
+Value *Block::Codegen(CModule *module)
 {
     return NULL;
 }
 
-Value* FunctionCall::Codegen()
+Value *AtomicFactor::Codegen(CModule *module)
 {
     return NULL;
 }
 
-Value* AtomicFactor::Codegen()
+Value *ExprFactor::Codegen(CModule *module)
 {
     return NULL;
 }
 
-Value* ExprFactor::Codegen()
+Value *Term::Codegen(CModule *module)
 {
     return NULL;
 }
 
-Value* Term::Codegen()
+Value *Cond::Codegen(CModule *module)
 {
     return NULL;
 }
 
-Value* Cond::Codegen()
+Value *Eq::Codegen(CModule *module)
+{
+    return NULL;
+}
+Value *LogicalAnd::Codegen(CModule *module)
+{
+    return NULL;
+}
+Value *LogicalOr::Codegen(CModule *module)
+{
+    return NULL;
+}
+Value *Expression::Codegen(CModule *module)
+{
+    return NULL;
+}
+Value *VarDeclaration::Codegen(CModule *module)
 {
     return NULL;
 }
 
-Value* Eq::Codegen()
-{
-    return NULL;
-}
-Value* LogicalAnd::Codegen()
-{
-    return NULL;
-}
-Value* LogicalOr::Codegen()
-{
-    return NULL;
-}
-Value* Expression::Codegen()
-{
-    return NULL;
-}
-Value* VarDeclaration::Codegen()
+Value *ReturnStatement::Codegen(CModule *module)
 {
     return NULL;
 }
 
-Value* ReturnStatement::Codegen()
-{
-    return NULL;
-}
-
-Value* AST::Codegen()
+Value *AST::Codegen(CModule *module)
 {
     return NULL;
 }

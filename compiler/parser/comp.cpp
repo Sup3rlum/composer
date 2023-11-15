@@ -40,6 +40,8 @@ PResult<CompDefinition> Parser::ParseCompDefinition(TokenStream& tokens)
 	VarDeclaration* field = 0;
 	std::vector<MemberFunctionDefinition*> members;
 	std::vector<VarDeclaration*> fields;
+
+	tokens.PushScope(compositionName);
 	do
 	{
 		member = ParseMemberFunctionDefinition(tokens);
@@ -58,6 +60,7 @@ PResult<CompDefinition> Parser::ParseCompDefinition(TokenStream& tokens)
 		}
 
 	} while (member || field);
+	tokens.PopScope();
 
 	if (!tokens.Match(TokenType::RCurly)) return ERROR("Expected '}'");
 

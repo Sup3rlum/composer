@@ -1,0 +1,32 @@
+
+
+data LinkedListNode<type Type>
+{
+	LinkedListNode<Type>* Next;
+	Type Value;	
+}
+
+comp LinkedList<type Type>
+{
+	alias NodeType = LinkedListNode<Type>;
+	NodeType* Root;
+
+
+	Insert(Type value) -> void
+	{
+		
+	}
+	
+	Count() -> int32
+	{
+		int32 count = 0;
+		NodeType* node = this.Root;
+		while (node)
+		{
+			count++;
+			node = node->Next;
+		}
+		
+		return count;
+	}
+}
