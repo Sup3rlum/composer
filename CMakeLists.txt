@@ -6,8 +6,8 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -w")
 
 # Change path from /src if needed, or add more directories
 file(GLOB_RECURSE sources
-        "${CMAKE_SOURCE_DIR}/*.c"
-        "${CMAKE_SOURCE_DIR}/*.cpp"
+        "${CMAKE_SOURCE_DIR}/src/*.c"
+        "${CMAKE_SOURCE_DIR}/src/*.cpp"
         )
 
 add_executable(cmpc ${sources})

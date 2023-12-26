@@ -1,54 +1,45 @@
-struct Person
+
+
+struct Day1 {}
+
+impl Solution for Day1
 {
-	let name: string = "";
-	let age: int32 = 0;
-	let health: int32 = 100;
-	func SayHi() -> void
-	{
-		print("Hi my name is " + name);
-	}
+    func GetAnswer1() -> string
+    {
+        let lines: strings = file("input.txt");
+        let total: int = 0;
+        for (let i: int = 0; i < 10; i + 1)
+        {
+            let line: string = GetLine(lines, i);
+            let dig1: int = 0;
+            let dig2: int = 0;
+
+            for (let c: char = 0; c < 20; c + 1)
+            {
+                if (IsDigit(c))
+                {
+                    dig1 = ToDigit(c);
+                    Break();
+                } 
+            }
+            
+            for (let c: char = 20; c >= 0 ; c - 1)
+            {
+                if (IsDigit(c))
+                {
+                    dig2 = ToDigit(c);
+                    Break();
+                }
+            }
+            let value: int = dig1 * 10 + dig2;
+            total = total + value;
+        }  
+        return total;
+    }
 }
-struct Weapon
-{
-	let magazineCapacity: int32 = 10;
-	let recoilForce: int32 = 15;
-}
-impl Shootable[Weapon, Person]
-{
-	func Shoot() -> void
-	{
-		if (Weapon::magazineCapacity > 0)
-		{
-			Weapon::magazineCapacity--;
-			if (recoilForce > 10)
-			{
-				Person::health -= 0.02 * Person::age;
-			}
-		}
-	}
-}
-impl Defusable[Person, DefuseKit]
-{
-	func Defuse() -> void
-	{
-		/* Stuff */
-	}
-}
-comp CounterTerrorist[Person, Weapon, RiotShield] {}
-comp BombSquadGuy[Person, Weapon, DefuseKit] {}
-comp Terrorist[Person, Weapon, C4Explosive] {}
-func main()
+
+func main(args: string) -> int
 {
 
-	CounterTerrorist ct1;
-	BombSquadGuy bombGuy;
-	Terrorist badGuy;
-
-	ct1.Shoot(); // Ok
-	bombGuy.Shoot(); // Ok
-	badGuy.Shoot(); // Ok
-
-	bombGuy.Defuse(); // Ok
-	ct1.Defuse(); // Error
 
 }
